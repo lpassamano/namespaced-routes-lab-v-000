@@ -4,6 +4,7 @@ RSpec.describe 'songs/index' do
   before do
     Artist.destroy_all
     Song.destroy_all
+    Preference.create(song_sort_order: "DESC", artist_sort_order: "DESC", allow_create_songs: true, allow_create_artists: false)
     @song = Song.create(title: "Bullet the Blue Sky", artist_name: "U2")
     allow(view).to receive(:display_artist).and_return("They Might Be Giants")
     assign(:songs, Song.all)
